@@ -6,8 +6,24 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
+        <item name="android:statusBarColor">@color/color_splash_screen</item>
     </style>
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+    </style>
+
+    <style name="GenreTextTheme" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/dp_10</item>
+    </style>
+
+    <style name="CategoryTextTheme" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/dp_8</item>
     </style>
 </resources>

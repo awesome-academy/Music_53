@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Music53</string>
+    <string name="search_music_hint">Search Music...</string>
+    <string name="title_classic">CLASSIC</string>
+    <string name="title_all">ALL</string>
+    <string name="title_edm">EDM</string>
+    <string name="title_country">COUNTRY</string>
+    <string name="title_all_audio">ALL AUDIO</string>
+    <string name="title_genres">Genres</string>
+    <string name="title_suggested_song">Suggested Song</string>
 </resources>
