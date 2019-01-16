@@ -7,5 +7,5 @@
     <string name="title_country">COUNTRY</string>
     <string name="title_all_audio">ALL AUDIO</string>
     <string name="title_genres">Genres</string>
-    <string name="title_suggested_song">Suggested Song</string>
+    <string name="title_suggested_song">Suggested Songs</string>
 </resources>
