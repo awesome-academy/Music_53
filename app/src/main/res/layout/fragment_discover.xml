@@ -7,17 +7,16 @@
     android:background="@color/color_splash_screen"
     tools:context=".ui.discover.DiscoverFragment">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:id="@+id/scroll_discover"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/t"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_50"
             android:paddingStart="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_50"
             android:paddingEnd="@dimen/dp_4">
 
             <TextView
@@ -181,6 +180,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_4"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_suggested_song" />
@@ -192,12 +194,12 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
         </android.support.constraint.ConstraintLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <include
         android:id="@+id/layout_search"
         layout="@layout/layout_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_4"/>
+        android:layout_margin="@dimen/dp_4" />
 </RelativeLayout>
