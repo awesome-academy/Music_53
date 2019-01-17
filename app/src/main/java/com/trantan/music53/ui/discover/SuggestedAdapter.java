@@ -41,7 +41,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
         return mTracks == null ? 0 : mTracks.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView mImageTrack;
         private ImageView mImageOption;
         private TextView mNameTrack;
