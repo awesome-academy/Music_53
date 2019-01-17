@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_gradient_top_to_bot"
-                android:text="@string/title_edm"
+                android:text="@string/title_alternativerock"
                 app:layout_constraintBottom_toBottomOf="@id/image_edm"
                 app:layout_constraintEnd_toEndOf="@id/image_edm"
                 app:layout_constraintStart_toStartOf="@id/image_edm" />

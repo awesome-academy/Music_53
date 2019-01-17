@@ -3,9 +3,99 @@
     <string name="search_music_hint">Search Music...</string>
     <string name="title_classic">CLASSIC</string>
     <string name="title_all">ALL</string>
-    <string name="title_edm">EDM</string>
+    <string name="title_alternativerock">Alternative Rock</string>
     <string name="title_country">COUNTRY</string>
     <string name="title_all_audio">ALL AUDIO</string>
     <string name="title_genres">Genres</string>
     <string name="title_suggested_song">Suggested Songs</string>
+    <string-array name="genres_key">
+        <item>soundcloud:genres:all-music</item>
+        <item>soundcloud:genres:all-audio</item>
+        <item>soundcloud:genres:alternativerock</item>
+        <item>soundcloud:genres:classical</item>
+        <item>soundcloud:genres:country</item>
+        <item>soundcloud:genres:ambient</item>
+        <item>soundcloud:genres:danceedm</item>
+        <item>soundcloud:genres:dancehall</item>
+        <item>soundcloud:genres:deephouse</item>
+        <item>soundcloud:genres:disco</item>
+        <item>soundcloud:genres:drumbass</item>
+        <item>soundcloud:genres:dubstep</item>
+        <item>soundcloud:genres:electronic</item>
+        <item>soundcloud:genres:folksingersongwriter</item>
+        <item>soundcloud:genres:hiphoprap</item>
+        <item>soundcloud:genres:house</item>
+        <item>soundcloud:genres:indie</item>
+        <item>soundcloud:genres:jazzblues</item>
+        <item>soundcloud:genres:latin</item>
+        <item>soundcloud:genres:metal</item>
+        <item>soundcloud:genres:piano</item>
+        <item>soundcloud:genres:pop</item>
+        <item>soundcloud:genres:rbsoul</item>
+        <item>soundcloud:genres:reggae</item>
+        <item>soundcloud:genres:reggaeton</item>
+        <item>soundcloud:genres:rock</item>
+        <item>soundcloud:genres:soundtrack</item>
+        <item>soundcloud:genres:techno</item>
+        <item>soundcloud:genres:trance</item>
+        <item>soundcloud:genres:trap</item>
+        <item>soundcloud:genres:triphop</item>
+        <item>soundcloud:genres:world</item>
+        <item>soundcloud:genres:audiobooks</item>
+        <item>soundcloud:genres:business</item>
+        <item>soundcloud:genres:comedy</item>
+        <item>soundcloud:genres:entertainment</item>
+        <item>soundcloud:genres:learning</item>
+        <item>soundcloud:genres:newspolitics</item>
+        <item>soundcloud:genres:religionspirituality</item>
+        <item>soundcloud:genres:science</item>
+        <item>soundcloud:genres:sports</item>
+        <item>soundcloud:genres:storytelling</item>
+        <item>soundcloud:genres:technology</item>
+    </string-array>
+    <string-array name="genres_name">
+        <item>All music</item>
+        <item>All audio</item>
+        <item>Alternative Rock</item>
+        <item>Classical</item>
+        <item>Country</item>
+        <item>Ambient</item>
+        <item>Dance &amp; EDM</item>
+        <item>Dancehall</item>
+        <item>Deep House</item>
+        <item>Disco</item>
+        <item>Drum &amp; Bass</item>
+        <item>Dubstep</item>
+        <item>Electronic</item>
+        <item>Folk &amp; Singer-Songwriter</item>
+        <item>Hip-hop &amp; Rap</item>
+        <item>House</item>
+        <item>Indie</item>
+        <item>Jazz &amp; Blues</item>
+        <item>Latin</item>
+        <item>Metal</item>
+        <item>Piano</item>
+        <item>Pop</item>
+        <item>R&amp;B &amp; Soul</item>
+        <item>Reggae</item>
+        <item>Reggaeton</item>
+        <item>Rock</item>
+        <item>Soundtrack</item>
+        <item>Techno</item>
+        <item>Trance</item>
+        <item>Trap</item>
+        <item>Triphop</item>
+        <item>World</item>
+        <item>Audiobooks</item>
+        <item>Business</item>
+        <item>Comedy</item>
+        <item>Entertainment</item>
+        <item>Learning</item>
+        <item>News &amp; Politics</item>
+        <item>Religion &amp; Spirituality</item>
+        <item>Science</item>
+        <item>Sports</item>
+        <item>Storytelling</item>
+        <item>Technology</item>
+    </string-array>
 </resources>
