@@ -46,9 +46,8 @@ public class DiscoverFragment extends Fragment implements DiscoverContract.View 
     }
 
     private void initPresenter() {
-        mPresenter
-                = new DiscoverPresenter(TrackRepository.getInstance(TracksRemoteDataSource.getInstance())
-                , this);
+        TrackRepository repository = TrackRepository.getInstance(TracksRemoteDataSource.getInstance());
+        mPresenter = new DiscoverPresenter(repository, this);
         mPresenter.loadSuggestedTrack();
     }
 

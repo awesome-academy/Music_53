@@ -21,7 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.genres.GenresActivity" />
-
+        <activity
+            android:name=".ui.detail_genre.DetailGenreActivity"
+            android:theme="@style/TransparentTheme" />
     </application>
 
 </manifest>
