@@ -9,4 +9,5 @@
     <color name="color_white">#ffffff</color>
     <color name="color_text_artist">#343F4B</color>
     <color name="color_black">#000000</color>
+    <color name="color_background_recycler">#96ffffff</color>
 </resources>
