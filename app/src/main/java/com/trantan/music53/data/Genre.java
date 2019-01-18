@@ -1,15 +1,14 @@
 package com.trantan.music53.data;
 
 public class Genre {
-    private static final String BASE_KEY_GENRE = "soundcloud:genres:";
     private String mName;
     private String mKeyGenre;
-    private String mImageUri;
+    private int mImageId;
 
-    public Genre(String name, String imageUri) {
-        setName(name.toUpperCase());
-        mImageUri = imageUri;
-        setKeyGenre(BASE_KEY_GENRE + name);
+    public Genre(String name, String keyGenre, int imageId) {
+        mName = name;
+        mKeyGenre = keyGenre;
+        mImageId = imageId;
     }
 
     public String getName() {
@@ -28,11 +27,11 @@ public class Genre {
         mKeyGenre = keyGenre;
     }
 
-    public String getImageUri() {
-        return mImageUri;
+    public int getImageId() {
+        return mImageId;
     }
 
-    public void setImageUri(String imageUri) {
-        mImageUri = imageUri;
+    public void setImageId(int imageId) {
+        mImageId = imageId;
     }
 }
