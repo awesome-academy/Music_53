@@ -9,6 +9,11 @@
         <item name="android:statusBarColor">@color/color_splash_screen</item>
     </style>
 
+    <style name="TransparentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/bg_splash_screen</item>
     </style>
@@ -25,5 +30,10 @@
         <item name="android:textColor">@color/color_primary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:padding">@dimen/dp_8</item>
+    </style>
+    <style name="CollapsedAppBarTheme" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>
