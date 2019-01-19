@@ -46,7 +46,7 @@ public class GenresActivity extends AppCompatActivity implements GenresContract.
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_search:
-                Intent intent = SearchActivity.getSearchIntent(this);
+                Intent intent = SearchActivity.getIntent(this);
                 startActivity(intent);
                 return true;
             default:
