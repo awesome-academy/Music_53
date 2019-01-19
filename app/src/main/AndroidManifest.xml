@@ -20,10 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.genres.GenresActivity" />
+        <activity
+            android:name=".ui.genres.GenresActivity"
+            android:theme="@style/GenresTheme" />
         <activity
             android:name=".ui.detail_genre.DetailGenreActivity"
             android:theme="@style/TransparentTheme" />
+        <activity android:name=".ui.search.SearchActivity" />
     </application>
 
 </manifest>
