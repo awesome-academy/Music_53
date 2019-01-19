@@ -52,8 +52,8 @@
         <item>soundcloud:genres:entertainment</item>
         <item>soundcloud:genres:learning</item>
         <item>soundcloud:genres:newspolitics</item>
-        <item>soundcloud:genres:religionspirituality</item>
         <item>soundcloud:genres:science</item>
+        <item>soundcloud:genres:religionspirituality</item>
         <item>soundcloud:genres:sports</item>
         <item>soundcloud:genres:storytelling</item>
         <item>soundcloud:genres:technology</item>
@@ -97,8 +97,8 @@
         <item>Entertainment</item>
         <item>Learning</item>
         <item>News &amp; Politics</item>
-        <item>Religion &amp; Spirituality</item>
         <item>Science</item>
+        <item>Religion &amp; Spirituality</item>
         <item>Sports</item>
         <item>Storytelling</item>
         <item>Technology</item>

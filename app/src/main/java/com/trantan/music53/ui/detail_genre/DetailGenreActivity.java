@@ -80,7 +80,7 @@ public class DetailGenreActivity extends AppCompatActivity implements DetailGenr
                 onBackPressed();
             }
         });
-        mCollapsingToolbar.setTitle(mGenre.getName());
+        mCollapsingToolbar.setTitle(mGenre.getName().toUpperCase());
         mImageGenre.setImageResource(mGenre.getImageId());
     }
 
