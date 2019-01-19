@@ -1,6 +1,8 @@
 package com.trantan.music53.data;
 
-public class Genre {
+import java.io.Serializable;
+
+public class Genre implements Serializable {
     private String mName;
     private String mKeyGenre;
     private int mImageId;

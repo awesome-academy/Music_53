@@ -10,8 +10,8 @@ import java.util.List;
 public class DiscoverPresenter implements DiscoverContract.Presenter {
     private final static String SUGGESTED_SONG_KIND = "trending";
     private final static String SUGGESTED_SONG_GENRE = "soundcloud:genres:all-music";
-    public static final int LIMIT = 50;
-    public static final int OFFSET = 0;
+    private static final int LIMIT = 50;
+    private static final int OFFSET = 0;
     private TrackRepository mRepository;
     private DiscoverContract.View mView;
 
