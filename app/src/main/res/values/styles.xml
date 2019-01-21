@@ -38,4 +38,8 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="MyDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:colorBackground">@color/color_background_recycler</item>
+    </style>
 </resources>

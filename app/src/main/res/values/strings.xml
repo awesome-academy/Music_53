@@ -104,4 +104,5 @@
         <item>Storytelling</item>
         <item>Technology</item>
     </string-array>
+    <string name="title_playing_list">Playing list (%d)</string>
 </resources>
