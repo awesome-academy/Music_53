@@ -88,4 +88,13 @@ public class Track implements Serializable {
     public void setDownloadable(boolean downloadable) {
         mIsDownloadable = downloadable;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Track) {
+            Track track = (Track) obj;
+            return track.getId() == this.getId();
+        }
+        return false;
+    }
 }
