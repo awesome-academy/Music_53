@@ -18,9 +18,11 @@ import java.util.List;
 
 public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.ViewHolder> {
     private List<Track> mTracks;
+    private TrackClickListener mListener;
 
-    public SuggestedAdapter(List<Track> tracks) {
+    public SuggestedAdapter(List<Track> tracks, TrackClickListener listener) {
         mTracks = tracks;
+        mListener = listener;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_recycler_suggested_songs, viewGroup, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
@@ -41,15 +43,19 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
         return mTracks == null ? 0 : mTracks.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private static final int INT_NINE = 9;
         private ImageView mImageTrack;
         private ImageView mImageOption;
         private TextView mNameTrack;
         private TextView mArtist;
+        private Track mTrack;
+        private TrackClickListener mListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, TrackClickListener listener) {
             super(itemView);
             initUI();
+            mListener = listener;
         }
 
         private void initUI() {
@@ -60,15 +66,27 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
         }
 
         public void bindData(Track track) {
+            mTrack = track;
             RequestOptions requestOptions = new RequestOptions();
-            requestOptions = requestOptions.transforms(new RoundedCorners(9));
-
+            requestOptions = requestOptions.transforms(new RoundedCorners(INT_NINE));
             Glide.with(mImageTrack)
                     .load(track.getArtworkUrl())
                     .apply(requestOptions)
                     .into(mImageTrack);
             mNameTrack.setText(track.getTitle());
             mArtist.setText(track.getArtist());
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            mListener.onTrackClick(mTrack);
+        }
+    }
+
+    interface TrackClickListener {
+        void onTrackClick(Track track);
+
+        void onOptionClick(Track track);
     }
 }

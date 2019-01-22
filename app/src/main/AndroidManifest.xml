@@ -31,4 +31,5 @@
 
         <service android:name=".service.music.PlayService" />
     </application>
+
 </manifest>

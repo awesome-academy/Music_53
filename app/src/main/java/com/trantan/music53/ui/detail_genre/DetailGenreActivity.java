@@ -16,6 +16,7 @@ import com.trantan.music53.R;
 import com.trantan.music53.data.Genre;
 import com.trantan.music53.data.Track;
 import com.trantan.music53.data.source.TrackRepository;
+import com.trantan.music53.data.source.local.LocalDataSource;
 import com.trantan.music53.data.source.remote.TracksRemoteDataSource;
 
 import java.util.List;
@@ -47,7 +48,8 @@ public class DetailGenreActivity extends AppCompatActivity implements DetailGenr
     }
 
     private void initPresenter() {
-        TrackRepository repository = TrackRepository.getInstance(TracksRemoteDataSource.getInstance());
+        TrackRepository repository = TrackRepository.getInstance(TracksRemoteDataSource.getInstance(),
+                LocalDataSource.getInstance(this));
         mPresenter = new DetailGenrePresenter(repository, this);
         mPresenter.loadTracks(mGenre);
     }

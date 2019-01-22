@@ -1,5 +1,6 @@
 package com.trantan.music53.ui.genres;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.trantan.music53.R;
 import com.trantan.music53.data.Genre;
 import com.trantan.music53.data.source.TrackRepository;
 import com.trantan.music53.data.source.local.LocalDataSource;
+import com.trantan.music53.data.source.remote.TracksRemoteDataSource;
 import com.trantan.music53.ui.detail_genre.DetailGenreActivity;
 import com.trantan.music53.ui.search.SearchActivity;
 
@@ -55,8 +57,8 @@ public class GenresActivity extends AppCompatActivity implements GenresContract.
     }
 
     private void initPresenter() {
-        mPresenter = new GenresPresenter(TrackRepository.getInstance(LocalDataSource.getInstance(this))
-                , this);
+        mPresenter = new GenresPresenter(TrackRepository.getInstance(TracksRemoteDataSource.getInstance(),
+                LocalDataSource.getInstance(this)), this);
         mPresenter.loadGenres();
     }
 
@@ -95,5 +97,10 @@ public class GenresActivity extends AppCompatActivity implements GenresContract.
     public void onGenreClick(Genre genre) {
         Intent intent = DetailGenreActivity.getDetailGenreIntent(this, genre);
         startActivity(intent);
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, GenresActivity.class);
+        return intent;
     }
 }
