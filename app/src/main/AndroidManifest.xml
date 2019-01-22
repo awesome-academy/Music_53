@@ -27,6 +27,8 @@
         <activity
             android:name=".ui.mainplay.MainPlayActivity"
             android:theme="@style/TransparentTheme" />
-    </application>
+        <activity android:name=".ui.search.SearchActivity" />
 
+        <service android:name=".service.music.PlayService" />
+    </application>
 </manifest>
