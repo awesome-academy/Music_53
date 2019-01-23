@@ -25,16 +25,18 @@
         android:layout_height="@dimen/dp_30"
         android:layout_marginEnd="@dimen/dp_5"
         android:indeterminateTint="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image_artwork"
         android:layout_width="@dimen/dp_50"
         android:layout_height="@dimen/dp_50"
         android:layout_marginStart="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_1"
+        android:layout_marginBottom="@dimen/dp_1"
         android:scaleType="centerCrop"
         android:src="@drawable/genre_1"
         app:layout_constraintBottom_toBottomOf="parent"

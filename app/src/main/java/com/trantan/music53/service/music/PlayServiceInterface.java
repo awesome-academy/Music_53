@@ -3,6 +3,8 @@ package com.trantan.music53.service.music;
 import com.trantan.music53.data.Track;
 import com.trantan.music53.tracksplayer.PlayerSetting;
 
+import java.util.List;
+
 public interface PlayServiceInterface {
     void onFailure();
 
@@ -29,4 +31,12 @@ public interface PlayServiceInterface {
     void setLoopType(@PlayerSetting.LoopType int type);
 
     void addTrack(Track track);
+
+    List<Track> getTracks();
+
+    void addPlayServiceListener(PlayServiceListener listener);
+
+    int getShuffleType();
+
+    int getLoopType();
 }

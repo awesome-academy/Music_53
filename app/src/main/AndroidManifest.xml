@@ -26,6 +26,7 @@
             android:theme="@style/TransparentTheme" />
         <activity
             android:name=".ui.mainplay.MainPlayActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/TransparentTheme" />
         <activity android:name=".ui.search.SearchActivity" />
 

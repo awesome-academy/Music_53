@@ -1,5 +1,7 @@
 package com.trantan.music53.ui.mainplay;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
@@ -59,5 +61,10 @@ public class MainPlayActivity extends AppCompatActivity {
         mTextCurrentTime = findViewById(R.id.text_current_time);
         mTextDuration = findViewById(R.id.text_duration);
         mSeekBar = findViewById(R.id.seek_time);
+    }
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, MainPlayActivity.class);
+        return intent;
     }
 }
