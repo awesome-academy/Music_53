@@ -1,5 +1,6 @@
 package com.trantan.music53.ui.discover;
 
+import com.trantan.music53.data.Genre;
 import com.trantan.music53.data.Track;
 import com.trantan.music53.data.source.TrackRepository;
 import com.trantan.music53.data.source.TracksDataSource;
@@ -33,6 +34,21 @@ public class DiscoverPresenter implements DiscoverContract.Presenter {
             @Override
             public void onFailure() {
                 mView.showSuggestedTrackFailure();
+            }
+        });
+    }
+
+    @Override
+    public void loadGenres() {
+        mRepository.getGenres(new TracksDataSource.GetGenresCallback() {
+            @Override
+            public void onGenresGetted(List<Genre> genres) {
+                mView.loadedGenres(genres);
+            }
+
+            @Override
+            public void onFailure() {
+
             }
         });
     }
