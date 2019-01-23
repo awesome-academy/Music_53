@@ -5,20 +5,14 @@ public class TrackRepository implements TracksDataSource.Remote, TracksDataSourc
     private TracksDataSource.Remote mRemoteDataSource;
     private TracksDataSource.Local mLocalDataSource;
 
-    private TrackRepository(TracksDataSource.Remote remoteDataSource) {
+    public TrackRepository(TracksDataSource.Remote remoteDataSource, TracksDataSource.Local localDataSource) {
         mRemoteDataSource = remoteDataSource;
-    }
-
-    public TrackRepository(TracksDataSource.Local localDataSource) {
         mLocalDataSource = localDataSource;
     }
 
-    public static TrackRepository getInstance(TracksDataSource.Remote remoteDataSource) {
-        return sInstance == null ? new TrackRepository(remoteDataSource) : sInstance;
-    }
-
-    public static TrackRepository getInstance(TracksDataSource.Local localDataSource) {
-        return sInstance == null ? new TrackRepository(localDataSource) : sInstance;
+    public static TrackRepository getInstance(TracksDataSource.Remote remote,
+                                              TracksDataSource.Local local) {
+        return sInstance == null ? new TrackRepository(remote, local) : sInstance;
     }
 
     @Override

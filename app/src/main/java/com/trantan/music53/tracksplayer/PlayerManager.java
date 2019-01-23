@@ -104,8 +104,7 @@ public class PlayerManager extends PlayerSetting
 
     @Override
     public void nextTrack() {
-        mCurrentTrack = getNextTrack();
-        changeTrack(mCurrentTrack);
+        changeTrack(getNextTrack());
     }
 
     private Track getNextTrack() {
@@ -124,7 +123,7 @@ public class PlayerManager extends PlayerSetting
 
     @Override
     public void previousTrack() {
-        mCurrentTrack = getPreviousTrack();
+        changeTrack(getPreviousTrack());
     }
 
     private Track getPreviousTrack() {
@@ -142,6 +141,8 @@ public class PlayerManager extends PlayerSetting
 
     @Override
     public void changeTrack(Track track) {
+        if (mTracks.indexOf(track) < INT_ZERO) addTrack(track);
+        mCurrentTrack = track;
         create(track);
     }
 

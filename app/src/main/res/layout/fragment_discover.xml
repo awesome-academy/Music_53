@@ -15,8 +15,9 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
             android:paddingStart="@dimen/dp_4"
-            android:paddingTop="@dimen/dp_50"
+            android:paddingTop="@dimen/dp_55"
             android:paddingEnd="@dimen/dp_4">
 
             <TextView
@@ -85,7 +86,7 @@
                 app:layout_constraintStart_toStartOf="@id/image_all_audio" />
 
             <ImageView
-                android:id="@+id/image_edm"
+                android:id="@+id/image_rock"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_150"
                 android:layout_marginStart="@dimen/dp_2"
@@ -97,15 +98,15 @@
                 app:layout_constraintTop_toBottomOf="@id/image_all" />
 
             <TextView
-                android:id="@+id/text_edm"
+                android:id="@+id/text_rock"
                 style="@style/GenreTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_gradient_top_to_bot"
                 android:text="@string/title_alternativerock"
-                app:layout_constraintBottom_toBottomOf="@id/image_edm"
-                app:layout_constraintEnd_toEndOf="@id/image_edm"
-                app:layout_constraintStart_toStartOf="@id/image_edm" />
+                app:layout_constraintBottom_toBottomOf="@id/image_rock"
+                app:layout_constraintEnd_toEndOf="@id/image_rock"
+                app:layout_constraintStart_toStartOf="@id/image_rock" />
 
             <ImageView
                 android:id="@+id/image_country"
@@ -114,7 +115,7 @@
                 android:layout_marginTop="@dimen/dp_4"
                 android:layout_marginEnd="@dimen/dp_2"
                 android:scaleType="centerCrop"
-                android:src="@drawable/genre_4"
+                android:src="@drawable/genre_5"
                 app:layout_constraintEnd_toStartOf="@id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_all_audio" />
@@ -125,7 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_gradient_top_to_bot"
-                android:text="@string/title_classic"
+                android:text="@string/title_country"
                 app:layout_constraintBottom_toBottomOf="@id/image_country"
                 app:layout_constraintEnd_toEndOf="@id/image_country"
                 app:layout_constraintStart_toStartOf="@id/image_country" />
@@ -137,10 +138,10 @@
                 android:layout_marginStart="@dimen/dp_2"
                 android:layout_marginTop="@dimen/dp_4"
                 android:scaleType="centerCrop"
-                android:src="@drawable/genre_5"
+                android:src="@drawable/genre_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/guideline"
-                app:layout_constraintTop_toBottomOf="@id/image_edm" />
+                app:layout_constraintTop_toBottomOf="@id/image_rock" />
 
             <TextView
                 android:id="@+id/text_classic"
@@ -148,7 +149,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_gradient_top_to_bot"
-                android:text="@string/title_country"
+                android:text="@string/title_classic"
                 app:layout_constraintBottom_toBottomOf="@id/image_classic"
                 app:layout_constraintEnd_toEndOf="@id/image_classic"
                 app:layout_constraintStart_toStartOf="@id/image_classic" />
@@ -183,6 +184,15 @@
                 android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_suggested_song" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/color_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_suggested_song" />

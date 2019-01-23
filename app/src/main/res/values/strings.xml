@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Music53</string>
     <string name="search_music_hint">Search Music...</string>
-    <string name="title_classic">CLASSIC</string>
-    <string name="title_all">ALL</string>
+    <string name="title_classic">Classical</string>
+    <string name="title_all">All music</string>
     <string name="title_alternativerock">Alternative Rock</string>
-    <string name="title_country">COUNTRY</string>
-    <string name="title_all_audio">ALL AUDIO</string>
-    <string name="title_genres">Genres</string>
-    <string name="title_suggested_song">Suggested Songs</string>
+    <string name="title_country">Country</string>
+    <string name="title_all_audio">All audio</string>
+    <string name="title_genres">TOP 100</string>
+    <string name="title_suggested_song">SUGGESTED SONGS</string>
     <string name="title_shuffle_play">SHUFFLE PLAY</string>
     <string name="menu_discover">Discover</string>
     <string name="menu_my_music">My Music</string>
