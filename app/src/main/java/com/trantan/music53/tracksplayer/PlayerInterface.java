@@ -36,4 +36,8 @@ public interface PlayerInterface {
     void addTrack(Track track);
 
     int getCurrentTime();
+
+    void release();
+
+    void removeTrack(Track track);
 }

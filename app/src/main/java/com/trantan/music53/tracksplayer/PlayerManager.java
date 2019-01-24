@@ -188,4 +188,16 @@ public class PlayerManager extends PlayerSetting
     public int getCurrentTime() {
         return mMediaPlayer.getCurrentPosition();
     }
+
+    @Override
+    public void release() {
+        mMediaPlayer.release();
+        sIntance = null;
+    }
+
+    @Override
+    public void removeTrack(Track track) {
+        mTracks.remove(track);
+        mShuffleTracks.remove(track);
+    }
 }

@@ -1,6 +1,7 @@
 package com.trantan.music53.data.source.local;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import com.trantan.music53.data.source.TracksDataSource;
 
@@ -18,7 +19,7 @@ public class LocalDataSource implements TracksDataSource.Local {
 
     @Override
     public void getGenres(TracksDataSource.GetGenresCallback callback) {
-        new GenresAsyncTask(mContext, callback).execute();
+        new GenresAsyncTask(mContext, callback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
