@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startPlayService() {
-        Intent intent = new Intent(this, PlayService.class);
+        Intent intent = PlayService.getIntent(this);
         startService(intent);
     }
 

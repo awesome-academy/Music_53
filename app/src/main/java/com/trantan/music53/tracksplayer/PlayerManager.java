@@ -117,7 +117,7 @@ public class PlayerManager extends PlayerSetting
             int position = mShuffleTracks.indexOf(mCurrentTrack);
             position++;
             if (position == mShuffleTracks.size()) position = INT_ZERO;
-            return mTracks.get(position);
+            return mShuffleTracks.get(position);
         }
     }
 
@@ -130,12 +130,13 @@ public class PlayerManager extends PlayerSetting
         if (mShuffleType == ShuffleType.OFF) {
             int position = mTracks.indexOf(mCurrentTrack);
             if (position == INT_ZERO) position = mTracks.size() - INT_ONE;
+            else position--;
             return mTracks.get(position);
         } else {
             int position = mShuffleTracks.indexOf(mCurrentTrack);
             position++;
-            if (position == mShuffleTracks.size()) position = mTracks.size() - INT_ONE;
-            return mTracks.get(position);
+            if (position == mShuffleTracks.size()) position = mShuffleTracks.size() - INT_ONE;
+            return mShuffleTracks.get(position);
         }
     }
 
@@ -174,8 +175,14 @@ public class PlayerManager extends PlayerSetting
     @Override
     public boolean isEndOfList() {
         if (mCurrentTrack == null) return true;
-        int position = mShuffleTracks.indexOf(mCurrentTrack);
-        if (++position == mShuffleTracks.size()) return true;
+        if (getShuffleType() == ShuffleType.ON) {
+            int position = mShuffleTracks.indexOf(mCurrentTrack);
+            if (++position == mShuffleTracks.size()) return true;
+        }
+        if (getShuffleType() == ShuffleType.OFF) {
+            int position = mTracks.indexOf(mCurrentTrack);
+            if (++position == mTracks.size()) return true;
+        }
         return false;
     }
 
