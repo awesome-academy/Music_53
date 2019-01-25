@@ -105,4 +105,5 @@
         <item>Technology</item>
     </string-array>
     <string name="title_playing_list">Playing list (%d)</string>
+    <string name="service_on_failure">Không tải được bài hát "%s"</string>
 </resources>

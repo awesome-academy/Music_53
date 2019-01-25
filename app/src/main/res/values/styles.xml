@@ -40,6 +40,12 @@
     </style>
 
     <style name="MyDialog" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="android:colorBackground">@color/color_background_recycler</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_recycle</item>
+        <item name="android:minHeight">200dp</item>
+        <item name="android:maxHeight">500dp</item>
     </style>
 </resources>
