@@ -39,6 +39,11 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
     private static final String PUBLISHER_METADATA = "publisher_metadata";
     private static final String ARTIST = "artist";
     private static final String DURATION = "duration";
+    private static final String GENRE = "genre";
+    private static final String CREATED_AT = "created_at";
+    private static final String COMMENT_COUNT = "comment_count";
+    private static final String LIKES_COUNT = "likes_count";
+    private static final String PLAY_COUNT = "playback_count";
     private TracksDataSource.LoadTracksCallback mCallback;
     private boolean mIsSearch = false;
 
@@ -73,7 +78,7 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
         try {
             JSONArray jsonTracks = new JSONArray(jsonText);
             for (int i = 0; i < jsonTracks.length(); i++) {
-                JSONObject jsonTrack = jsonTracks.getJSONObject(i).getJSONObject(TRACK);
+                JSONObject jsonTrack = jsonTracks.getJSONObject(i);
                 int id = jsonTrack.getInt(ID);
                 String title = jsonTrack.getString(TITLE);
                 String artist = null;
@@ -84,7 +89,10 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
                 if (artist == null || artist.equals(""))
                     artist = jsonTrack.getJSONObject(KEY_USER).getString(KEY_USER_NAME);
                 int duration = jsonTrack.getInt(DURATION);
-                String artworkUrl = jsonTrack.getString(ARTWORK_URL);
+                String artworkUrl;
+                if (jsonTrack.isNull(ARTWORK_URL)) {
+                    artworkUrl = Uri.parse(DEFAULT_ARTWORK_URL).toString();
+                } else artworkUrl = jsonTrack.getString(ARTWORK_URL);
                 boolean isDownloadable = jsonTrack.getBoolean(DOWNLOADABLE);
                 String downloadUrl = StringUtil.initDownloadUrl(id);
                 String streamUrl = StringUtil.initStreamUrl(id);
@@ -92,6 +100,19 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
                         = new Track(id, duration, title
                         , artist, streamUrl, downloadUrl
                         , artworkUrl, isDownloadable);
+                String created = null;
+                int mCommentCount = 0;
+                int mLikesCount = 0;
+                int mPlaybackCount = 0;
+                if (!jsonTrack.isNull(CREATED_AT)) created = jsonTrack.getString(CREATED_AT);
+                if (!jsonTrack.isNull(COMMENT_COUNT))
+                    mCommentCount = jsonTrack.getInt(COMMENT_COUNT);
+                if (!jsonTrack.isNull(LIKES_COUNT)) mLikesCount = jsonTrack.getInt(LIKES_COUNT);
+                if (!jsonTrack.isNull(PLAY_COUNT)) mLikesCount = jsonTrack.getInt(PLAY_COUNT);
+                track.setCreatedAt(created);
+                track.setCommentCount(mCommentCount);
+                track.setLikesCount(mLikesCount);
+                track.setPlaybackCount(mPlaybackCount);
                 tracks.add(track);
             }
         } catch (JSONException e) {
@@ -102,7 +123,6 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
 
     private List<Track> convertJsonTextGenre(String jsonText) throws JSONException {
         List<Track> tracks = new ArrayList<>();
-
         JSONObject jsonObject = new JSONObject(jsonText);
         JSONArray jsonCollections = jsonObject.getJSONArray(COLLECTION);
         for (int i = 0; i < jsonCollections.length(); i++) {
@@ -134,6 +154,19 @@ public class TracksAsyncTask extends AsyncTask<String, Track, List<Track>> {
                     = new Track(id, duration, title
                     , artist, streamUrl, downloadUrl
                     , artworkUrl, isDownloadable);
+            String created = null;
+            int mCommentCount = 0;
+            int mLikesCount = 0;
+            int mPlaybackCount = 0;
+            if (!jsonTrack.isNull(CREATED_AT)) created = jsonTrack.getString(CREATED_AT);
+            if (!jsonTrack.isNull(COMMENT_COUNT))
+                mCommentCount = jsonTrack.getInt(COMMENT_COUNT);
+            if (!jsonTrack.isNull(LIKES_COUNT)) mLikesCount = jsonTrack.getInt(LIKES_COUNT);
+            if (!jsonTrack.isNull(PLAY_COUNT)) mLikesCount = jsonTrack.getInt(PLAY_COUNT);
+            track.setCreatedAt(created);
+            track.setCommentCount(mCommentCount);
+            track.setLikesCount(mLikesCount);
+            track.setPlaybackCount(mPlaybackCount);
             tracks.add(track);
         }
         return tracks;
