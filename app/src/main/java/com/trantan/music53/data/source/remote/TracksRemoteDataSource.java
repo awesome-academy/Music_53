@@ -8,7 +8,8 @@ public class TracksRemoteDataSource implements TracksDataSource.Remote {
     private static TracksRemoteDataSource sInstance;
 
     public static TracksRemoteDataSource getInstance() {
-        return sInstance == null ? new TracksRemoteDataSource() : sInstance;
+        if (sInstance == null) sInstance = new TracksRemoteDataSource();
+        return sInstance;
     }
 
     @Override
