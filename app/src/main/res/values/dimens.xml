@@ -18,4 +18,6 @@
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_55">55dp</dimen>
     <dimen name="sp_14">14sp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
 </resources>
