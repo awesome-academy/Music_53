@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_8"
+    tools:context=".ui.option.OptionFragment">
+
+    <ImageView
+        android:id="@+id/image_artwork"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_margin="@dimen/dp_8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/genre_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_title"
+        style="@style/CategoryTextTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toTopOf="@id/text_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_artwork"
+        app:layout_constraintTop_toTopOf="@id/image_artwork"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/text_artist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/dp_8"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="@id/image_artwork"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_artwork"
+        app:layout_constraintTop_toBottomOf="@id/text_title" />
+
+    <ImageView
+        android:id="@+id/image_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_favorite_24dp"
+        android:tint="@color/color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_artwork" />
+
+    <TextView
+        android:id="@+id/text_favorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:padding="@dimen/dp_8"
+        android:text="@string/title_add_to_favorite"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="@id/image_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_favorite"
+        app:layout_constraintTop_toTopOf="@id/image_favorite" />
+
+    <ImageView
+        android:id="@+id/image_download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_download"
+        android:tint="@color/color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_favorite" />
+
+    <TextView
+        android:id="@+id/text_download"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:padding="@dimen/dp_8"
+        android:text="@string/title_download"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="@id/image_download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_download"
+        app:layout_constraintTop_toTopOf="@id/image_download" />
+
+    <ImageView
+        android:id="@+id/image_add_queue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_add_playing"
+        android:tint="@color/color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_download" />
+
+    <TextView
+        android:id="@+id/text_add_to_queue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:padding="@dimen/dp_8"
+        android:text="@string/title_add_to_queue"
+        android:textColor="@color/color_black"
+        app:layout_constraintBottom_toBottomOf="@id/image_add_queue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_add_queue"
+        app:layout_constraintTop_toTopOf="@id/image_add_queue" />
+</android.support.constraint.ConstraintLayout>

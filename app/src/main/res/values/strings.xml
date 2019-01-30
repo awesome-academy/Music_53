@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Music53</string>
+    <string name="app_name">Music</string>
     <string name="search_music_hint">Search Music...</string>
     <string name="title_classic">Classical</string>
     <string name="title_all">All music</string>
@@ -105,5 +105,14 @@
         <item>Technology</item>
     </string-array>
     <string name="title_playing_list">Playing list (%d)</string>
-    <string name="service_on_failure">Không tải được bài hát "%s"</string>
+    <string name="err_service_on_failure">Không tải được bài hát "%s"</string>
+    <string name="toast_downloaded">Downloaded</string>
+    <string name="err_download_permistion_false">Bạn phải cấp quyền để download</string>
+    <string name="toast_downloading">Downloading...</string>
+    <string name="title_download">Download</string>
+    <string name="title_add_to_favorite">Add to Favorite</string>
+    <string name="title_add_to_queue">Add to queue</string>
+    <string name="toast_added">Added</string>
+    <string name="err_permission_deni">Không thể chơi nhạc offline nếu không cấp quyền</string>
+    <string name="title_upload_date">Upload date:</string>
 </resources>
