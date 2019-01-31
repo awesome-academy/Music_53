@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.trantan.music53.R;
 import com.trantan.music53.data.Track;
 import com.trantan.music53.service.music.PlayService;
 import com.trantan.music53.service.music.PlayServiceListener;
-import com.trantan.music53.ui.MainActivity;
+import com.trantan.music53.ui.BaseAcivity;
 import com.trantan.music53.ui.mainplay.MainPlayActivity;
 import com.trantan.music53.utils.GlideApp;
 
@@ -38,12 +39,11 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
     private ProgressBar mProgressLoad;
     private PlayService mService;
     private ServiceConnection mConnection;
-    private MainActivity mMainActivity;
+    private BaseAcivity mActivity;
 
     public MiniPlayFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +56,35 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onStart() {
+        if (mService != null) {
+            if (mService.getCurrentTrack() != null) {
+                bindData(mService.getCurrentTrack());
+                mActivity.showMiniPlayFragment(true);
+                listenPrepared();
+            }
+        }
+        super.onStart();
+    }
+
+    @Override
     public void onDestroy() {
+        mService.removeListener(this);
         getActivity().unbindService(mConnection);
         super.onDestroy();
     }
@@ -83,7 +111,7 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
     }
 
     private void initUi(View view) {
-        mMainActivity = (MainActivity) getActivity();
+        mActivity = (BaseAcivity) getActivity();
         mImageArtwork = view.findViewById(R.id.image_artwork);
         mTextTrack = view.findViewById(R.id.text_name);
         mTextArtist = view.findViewById(R.id.text_artist);
@@ -99,9 +127,12 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
                 PlayService.MyBinder myBinder = (PlayService.MyBinder) service;
                 mService = myBinder.getService();
                 mService.addPlayServiceListener(MiniPlayFragment.this);
-                if (mService.isPlaying()) {
-                    mMainActivity.showMiniPlayFragment(mService.getCurrentTrack(), true);
+                if (mService.getCurrentTrack() != null) {
+                    bindData(mService.getCurrentTrack());
+                    mActivity.showMiniPlayFragment(true);
                     listenPrepared();
+                    listenPlayingState(mService.isPlaying());
+
                 }
             }
 
@@ -123,6 +154,7 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
     @Override
     public void listenChangeSong(Track track) {
         bindData(track);
+        mActivity.showMiniPlayFragment(true);
     }
 
     @Override
@@ -133,9 +165,10 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
 
     @Override
     public void listenPrepared() {
+        bindData(mService.getCurrentTrack());
         mProgressLoad.setVisibility(View.GONE);
         mImagePlay.setVisibility(View.VISIBLE);
-        mImagePlay.setImageResource(R.drawable.ic_pause);
+        listenPlayingState(mService.isPlaying());
     }
 
     @Override
@@ -145,14 +178,15 @@ public class MiniPlayFragment extends Fragment implements PlayServiceListener,
                 mService.nextTrack();
                 break;
             case R.id.image_play:
-                if (mService.isPlaying()) mService.onPause();
-                else mService.onStart();
+                if (mService.isPlaying()) mService.pauseTrack();
+                else mService.startTrack();
                 break;
             case R.id.image_next:
                 mService.nextTrack();
                 break;
             default:
                 Intent intent = MainPlayActivity.getIntent(getContext());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 getActivity().startActivity(intent);
         }
     }
