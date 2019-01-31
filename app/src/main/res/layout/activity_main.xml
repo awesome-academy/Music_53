@@ -7,21 +7,20 @@
     android:background="@color/color_splash_screen"
     tools:context=".ui.MainActivity">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/frag_main"
-        android:name="com.trantan.music53.ui.discover.DiscoverFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/frag_mini_play"
+        app:layout_constraintBottom_toTopOf="@id/view_mini_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/frag_mini_play"
-        android:name="com.trantan.music53.ui.miniplay.MiniPlayFragment"
+    <FrameLayout
+        android:id="@+id/view_mini_play"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

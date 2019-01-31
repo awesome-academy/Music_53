@@ -1,4 +1,4 @@
-package com.trantan.music53.ui.discover;
+package com.trantan.music53.ui.search;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,34 +8,46 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.trantan.music53.R;
 import com.trantan.music53.data.Track;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.ViewHolder> {
+public class SearchApdater extends RecyclerView.Adapter<SearchApdater.ViewHolder> {
     private List<Track> mTracks;
     private TrackClickListener mListener;
 
-    public SuggestedAdapter(List<Track> tracks, TrackClickListener listener) {
+    public SearchApdater(List<Track> tracks, TrackClickListener listener) {
         mTracks = tracks;
         mListener = listener;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        if (tracks == null) tracks = new ArrayList<>();
+        mTracks.clear();
+        mTracks.addAll(tracks);
+    }
+
+    public void addNewTracks(List<Track> tracks) {
+        mTracks.addAll(tracks);
+    }
+
+    public List<Track> getTracks() {
+        return mTracks;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_recycler_suggested_songs, viewGroup, false);
+                .inflate(R.layout.item_recycler_detail_genres, viewGroup, false);
         return new ViewHolder(view, mListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.bindData(mTracks.get(i));
+        viewHolder.bindData(mTracks.get(i), ++i);
     }
 
     @Override
@@ -44,44 +56,47 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private static final int INT_NINE = 9;
-        private ImageView mImageTrack;
-        private ImageView mImageOption;
+        private TextView mTextCount;
         private TextView mNameTrack;
         private TextView mArtist;
+        private ImageView mImageDownload;
+        private ImageView mImageOption;
         private Track mTrack;
         private TrackClickListener mListener;
 
         public ViewHolder(@NonNull View itemView, TrackClickListener listener) {
             super(itemView);
-            initUI();
             mListener = listener;
+            initUi();
         }
 
-        private void initUI() {
-            mImageTrack = itemView.findViewById(R.id.image_track);
-            mImageOption = itemView.findViewById(R.id.image_option);
+        private void initUi() {
+            mTextCount = itemView.findViewById(R.id.text_count);
             mNameTrack = itemView.findViewById(R.id.text_name);
             mArtist = itemView.findViewById(R.id.text_artist);
+            mImageDownload = itemView.findViewById(R.id.image_download);
+            mImageOption = itemView.findViewById(R.id.image_option);
         }
 
-        public void bindData(Track track) {
+        public void bindData(Track track, int i) {
             mTrack = track;
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions = requestOptions.transforms(new RoundedCorners(INT_NINE));
-            Glide.with(mImageTrack)
-                    .load(track.getArtworkUrl())
-                    .apply(requestOptions)
-                    .into(mImageTrack);
+            mTextCount.setText(String.valueOf(i));
             mNameTrack.setText(track.getTitle());
             mArtist.setText(track.getArtist());
+            if (!track.isDownloadable()) mImageDownload.setVisibility(View.GONE);
+            else mImageDownload.setVisibility(View.VISIBLE);
+
             itemView.setOnClickListener(this);
+            mImageDownload.setOnClickListener(this);
             mImageOption.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.image_download:
+                    mListener.onDowloadClick(mTrack);
+                    break;
                 case R.id.image_option:
                     mListener.onOptionClick(mTrack);
                     break;
@@ -95,5 +110,7 @@ public class SuggestedAdapter extends RecyclerView.Adapter<SuggestedAdapter.View
         void onTrackClick(Track track);
 
         void onOptionClick(Track track);
+
+        void onDowloadClick(Track track);
     }
 }

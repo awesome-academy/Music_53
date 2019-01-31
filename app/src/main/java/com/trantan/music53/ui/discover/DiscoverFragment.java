@@ -22,9 +22,9 @@ import com.trantan.music53.data.source.TrackRepository;
 import com.trantan.music53.data.source.local.LocalDataSource;
 import com.trantan.music53.data.source.remote.TracksRemoteDataSource;
 import com.trantan.music53.service.music.PlayService;
-import com.trantan.music53.ui.MainActivity;
 import com.trantan.music53.ui.detail_genre.DetailGenreActivity;
 import com.trantan.music53.ui.genres.GenresActivity;
+import com.trantan.music53.ui.option.OptionFragment;
 import com.trantan.music53.ui.search.SearchActivity;
 
 import java.util.List;
@@ -48,7 +48,6 @@ public class DiscoverFragment extends Fragment implements DiscoverContract.View,
     private ServiceConnection mConnection;
     private PlayService mPlayService;
     private List<Genre> mGenres;
-    private MainActivity mMainActivity;
 
     public DiscoverFragment() {
         // Required empty public constructor
@@ -103,7 +102,6 @@ public class DiscoverFragment extends Fragment implements DiscoverContract.View,
     }
 
     private void initUi(View view) {
-        mMainActivity = (MainActivity) getActivity();
         mSearchView = view.findViewById(R.id.layout_search);
         mTextGenres = view.findViewById(R.id.text_genres);
         mTextSuggestedSong = view.findViewById(R.id.text_suggested_song);
@@ -147,12 +145,12 @@ public class DiscoverFragment extends Fragment implements DiscoverContract.View,
     @Override
     public void onTrackClick(Track track) {
         mPlayService.changedTrack(track);
-        mMainActivity.showMiniPlayFragment(track, true);
     }
 
     @Override
     public void onOptionClick(Track track) {
-
+        OptionFragment optionFragment = OptionFragment.getIntance(track);
+        optionFragment.show(getActivity().getSupportFragmentManager(), optionFragment.getTag());
     }
 
     @Override
