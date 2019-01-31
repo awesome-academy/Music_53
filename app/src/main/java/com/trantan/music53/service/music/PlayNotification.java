@@ -137,6 +137,7 @@ public class PlayNotification {
     }
 
     public static void upDateImagePlay(boolean isPlaying) {
+        if (sManager == null) return;
         if (isPlaying) {
             sRemoteViews.setImageViewResource(R.id.image_play, R.drawable.ic_pause);
             sBigRemoteViews.setImageViewResource(R.id.image_play, R.drawable.ic_pause);

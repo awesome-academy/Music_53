@@ -8,7 +8,9 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.Toast;
 
+import com.trantan.music53.R;
 import com.trantan.music53.data.Track;
 import com.trantan.music53.tracksplayer.PlayerManager;
 import com.trantan.music53.tracksplayer.PlayerSetting;
@@ -55,8 +57,8 @@ public class PlayService extends Service
                 previousTrack();
                 break;
             case ACTION_PLAY_PAUSE:
-                if (isPlaying()) onPause();
-                else onStart();
+                if (isPlaying()) pauseTrack();
+                else startTrack();
                 PlayNotification.upDateImagePlay(isPlaying());
                 break;
             case ACTION_NEXT:
@@ -65,7 +67,11 @@ public class PlayService extends Service
             case ACTION_CLOSE:
                 if (!isBind) {
                     mTimeTask.setRunable(false);
+                    mPlayerManager.release();
                     stopSelf();
+                } else {
+                    pauseTrack();
+                    stopForeground(true);
                 }
                 break;
             default:
@@ -93,13 +99,14 @@ public class PlayService extends Service
         switch (mPlayerManager.getLoopType()) {
             case PlayerSetting.LoopType.NONE:
                 if (mPlayerManager.isEndOfList()) mPlayerManager.stop();
-                else mPlayerManager.nextTrack();
+                else nextTrack();
                 break;
             case PlayerSetting.LoopType.ALL:
-                mPlayerManager.nextTrack();
+                nextTrack();
                 break;
             case PlayerSetting.LoopType.ONE:
                 mPlayerManager.start();
+                synTrackPlaying();
                 break;
             default:
         }
@@ -107,6 +114,7 @@ public class PlayService extends Service
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
+        onFailure();
         return true;
     }
 
@@ -123,34 +131,42 @@ public class PlayService extends Service
         }
     }
 
-
     @Override
     public void onFailure() {
+        Toast.makeText(this,
+                String.format(getString(R.string.err_service_on_failure), getCurrentTrack().getTitle()),
+                Toast.LENGTH_SHORT).show();
         mPlayerManager.nextTrack();
     }
 
     @Override
     public void changedTrack(Track track) {
         mPlayerManager.changeTrack(track);
+        synTrackPlaying();
     }
 
     private void synTrackPlaying() {
+        PlayNotification.upDateImagePlay(isPlaying());
         for (PlayServiceListener listener : mListeners) {
             listener.listenChangeSong(mPlayerManager.getCurrentTrack());
         }
     }
 
     @Override
-    public void onStart() {
-        mPlayerManager.start();
+    public void startTrack() {
+        Track track = mPlayerManager.getCurrentTrack();
+        Notification notification = PlayNotification.setUpNotification(this, track);
+        PlayNotification.upDateImagePlay(isPlaying());
+        startForeground(PlayNotification.NOTIFICATION_ID, notification);
 
+        mPlayerManager.start();
         synPlayingState();
     }
 
     @Override
-    public void onPause() {
+    public void pauseTrack() {
+        stopForeground(false);
         mPlayerManager.pause();
-
         synPlayingState();
     }
 
@@ -206,6 +222,7 @@ public class PlayService extends Service
     @Override
     public void addTrack(Track track) {
         mPlayerManager.addTrack(track);
+        if (getTracks().size() == 1) changedTrack(track);
     }
 
     @Override
@@ -226,6 +243,30 @@ public class PlayService extends Service
     @Override
     public int getLoopType() {
         return mPlayerManager.getLoopType();
+    }
+
+    @Override
+    public void removeTrack(Track track) {
+        mPlayerManager.removeTrack(track);
+    }
+
+    @Override
+    public void removeListener(PlayServiceListener listener) {
+        for (int i = 0; i < mListeners.size(); i++) {
+            if (mListeners.get(i) == listener) {
+                mListeners.remove(i);
+            }
+        }
+    }
+
+    @Override
+    public void clearTracks() {
+        mPlayerManager.clearTracks();
+    }
+
+    @Override
+    public void addTracks(List<Track> tracks) {
+        mPlayerManager.addTracks(tracks);
     }
 
     public static Intent getIntent(Context context) {

@@ -27,7 +27,7 @@
         android:textColor="@color/color_black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/text_artist"
-        app:layout_constraintEnd_toStartOf="@id/image_favorite"
+        app:layout_constraintEnd_toStartOf="@id/image_download"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/text_count"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +41,7 @@
         android:maxLines="1"
         android:textColor="@color/color_text_artist"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/image_favorite"
+        app:layout_constraintEnd_toStartOf="@id/image_download"
         app:layout_constraintStart_toEndOf="@id/text_count"
         app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
@@ -56,11 +56,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image_favorite"
+        android:id="@+id/image_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dp_8"
-        android:src="@drawable/ic_favorite_24dp"
+        android:src="@drawable/ic_download"
+        android:tint="@color/color_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/image_option"
         app:layout_constraintTop_toTopOf="parent" />

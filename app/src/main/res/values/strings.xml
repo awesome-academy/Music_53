@@ -115,4 +115,7 @@
     <string name="toast_added">Added</string>
     <string name="err_permission_deni">Không thể chơi nhạc offline nếu không cấp quyền</string>
     <string name="title_upload_date">Upload date:</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_download">Download</string>
+    <string name="title_tracks">Tracks</string>
 </resources>
