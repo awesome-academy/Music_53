@@ -10,9 +10,9 @@ public interface PlayServiceInterface {
 
     void changedTrack(Track track);
 
-    void onStart();
+    void startTrack();
 
-    void onPause();
+    void pauseTrack();
 
     boolean isPlaying();
 
@@ -32,6 +32,8 @@ public interface PlayServiceInterface {
 
     void addTrack(Track track);
 
+    void addTracks(List<Track> tracks);
+
     List<Track> getTracks();
 
     void addPlayServiceListener(PlayServiceListener listener);
@@ -39,4 +41,11 @@ public interface PlayServiceInterface {
     int getShuffleType();
 
     int getLoopType();
+
+    void removeTrack(Track track);
+
+    void removeListener(PlayServiceListener listener);
+
+    void clearTracks();
+
 }

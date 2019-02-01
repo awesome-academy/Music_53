@@ -2,6 +2,8 @@ package com.trantan.music53.tracksplayer;
 
 import com.trantan.music53.data.Track;
 
+import java.util.List;
+
 public interface PlayerInterface {
     void create(Track track);
 
@@ -35,9 +37,14 @@ public interface PlayerInterface {
 
     void addTrack(Track track);
 
+    void addTracks(List<Track> tracks);
+
     int getCurrentTime();
 
     void release();
 
     void removeTrack(Track track);
+
+    void clearTracks();
+
 }

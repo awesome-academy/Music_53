@@ -166,16 +166,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_country" />
 
-            <ImageView
-                android:id="@+id/image_more_songs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dp_10"
-                app:layout_constraintBottom_toBottomOf="@id/text_suggested_song"
-                app:layout_constraintEnd_toEndOf="@id/text_suggested_song"
-                app:layout_constraintTop_toTopOf="@id/text_suggested_song"
-                app:srcCompat="@drawable/ic_arrow_right" />
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycle_suggested_song"
                 android:layout_width="0dp"
@@ -186,13 +176,14 @@
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_suggested_song" />
+                app:layout_constraintTop_toBottomOf="@id/progress" />
 
             <ProgressBar
                 android:id="@+id/progress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:indeterminateTint="@color/color_primary"
+                android:paddingBottom="@dimen/dp_200"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_suggested_song" />

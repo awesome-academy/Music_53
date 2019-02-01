@@ -207,4 +207,16 @@ public class PlayerManager extends PlayerSetting
         mTracks.remove(track);
         mShuffleTracks.remove(track);
     }
+
+    @Override
+    public void clearTracks() {
+        mTracks.clear();
+        mShuffleTracks.clear();
+    }
+
+    @Override
+    public void addTracks(List<Track> tracks) {
+        clearTracks();
+        mTracks.addAll(tracks);
+    }
 }
